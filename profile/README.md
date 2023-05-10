@@ -12,13 +12,13 @@
         <img alt="the latest release version" src="https://img.shields.io/github/v/release/wenjiedu/pypots?color=e0eee8&include_prereleases&label=Release">
     </a>
     <a href="https://github.com/WenjieDu/PyPOTS/blob/main/LICENSE">
-        <img alt="GPL3 license" src="https://img.shields.io/badge/License-GPL--v3-c0ebd7">
+        <img alt="GPL-v3 license" src="https://img.shields.io/badge/License-GPL--v3-c0ebd7">
     </a>
     <a href="https://github.com/WenjieDu/PyPOTS/blob/main/README.md#-community">
         <img alt="Community" src="https://img.shields.io/badge/join_us-community!-7fecad">
     </a>
-    <a href="https://github.com/sponsors/WenjieDu">
-        <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/wenjiedu?label=Sponsors&color=7bcfa6&logo=githubsponsors">
+    <a href="https://github.com/WenjieDu/PyPOTS/graphs/contributors">
+        <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/wenjiedu/pypots?color=7bcfa6&label=Contributors&logo=GitHub">
     </a>
     <a href="https://github.com/WenjieDu/PyPOTS/stargazers">
         <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/wenjiedu/pypots?logo=Github&color=7bcfa6&label=Stars">
@@ -32,8 +32,8 @@
     <a href="https://coveralls.io/github/WenjieDu/PyPOTS">
         <img alt="Coveralls coverage" src="https://img.shields.io/coverallsCoverage/github/WenjieDu/PyPOTS?branch=main&logo=coveralls&color=00e09e&label=Coverage">
     </a>
-    <a href="https://github.com/WenjieDu/PyPOTS/actions/workflows/testing.yml">
-        <img alt="GitHub Testing" src="https://img.shields.io/github/actions/workflow/status/wenjiedu/pypots/testing.yml?logo=github&color=48c0a3&label=CI">
+    <a href="https://github.com/WenjieDu/PyPOTS/actions/workflows/testing_ci.yml">
+        <img alt="GitHub Testing" src="https://img.shields.io/github/actions/workflow/status/wenjiedu/pypots/testing_ci.yml?logo=github&color=48c0a3&label=CI">
     </a>
     <a href="https://doi.org/10.5281/zenodo.6823221">
         <img alt="Zenodo DOI" src="https://img.shields.io/badge/DOI-10.5281/zenodo.6823221-21a675">
@@ -47,9 +47,9 @@
 
 </p>
 
-⦿ `Motivation`: Due to all kinds of reasons like failure of collection sensors, communication error, 
-and unexpected malfunction, missing values are common to see in time series from the real-world environment. 
-This makes partially-observed time series (POTS) a pervasive problem in open-world modeling and prevents advanced 
+⦿ `Motivation`: Due to all kinds of reasons like failure of collection sensors, communication error,
+and unexpected malfunction, missing values are common to see in time series from the real-world environment.
+This makes partially-observed time series (POTS) a pervasive problem in open-world modeling and prevents advanced
 data analysis. Although this problem is important, the area of data mining on POTS still lacks a dedicated toolkit.
 PyPOTS is created to fill in this blank.
 
@@ -62,44 +62,52 @@ have unified APIs together with detailed documentation and interactive examples 
 <a href="https://github.com/WenjieDu/TSDB">
     <img src="https://raw.githubusercontent.com/WenjieDu/TSDB/main/docs/_static/figs/TSDB_logo.svg?sanitize=true" align="left" width="160" alt="TSDB logo"/>
 </a>
-To make various open-source time-series datasets readily available to our users, 
-PyPOTS gets supported by project [TSDB (Time-Series Data Base)](https://github.com/WenjieDu/TSDB), 
+
+To make various open-source time-series datasets readily available to our users,
+PyPOTS gets supported by project [TSDB (Time-Series Data Base)](https://github.com/WenjieDu/TSDB),
 a toolbox making loading time-series datasets super easy!
 
-Visit [TSDB](https://github.com/WenjieDu/TSDB) right now to know more about this handy tool 🛠! 
+Visit [TSDB](https://github.com/WenjieDu/TSDB) right now to know more about this handy tool 🛠!
 It now supports a total of 119 open-source datasets.
 <br clear="left">
 
 The rest of this readme file is organized as follows:
-[Installation](#-installation),
-[Usage](#-usage), 
-[Available Algorithms](#-available-algorithms),
-[Citing PyPOTS](#-citing-pypots),
-[Community](#-community),
-[Contribution](#-contribution).
+[**❖ Installation**](#-installation),
+[**❖ Usage**](#-usage),
+[**❖ Available Algorithms**](#-available-algorithms),
+[**❖ Citing PyPOTS**](#-citing-pypots),
+[**❖ Contribution**](#-contribution),
+[**❖ Community**](#-community).
 
 
 ## ❖ Installation
-PyPOTS now is available on <a href="https://anaconda.org/conda-forge/pypots"><img alt="on Anaconda" align="center"
-src="https://img.shields.io/badge/Anaconda--lightgreen?style=social&logo=anaconda"></a>❗️
+PyPOTS is available on both [PyPI](https://pypi.python.org/pypi/pypots) and [Anaconda](https://anaconda.org/conda-forge/pypots).
+You can install PyPOTS as shown below:
 
-Install it with `conda install pypots`, you may need to specify the channel with option `-c conda-forge`
+``` bash
+# by pip
+pip install pypots            # the first time installation
+pip install pypots --upgrade  # update pypots to the latest version
 
-Install the latest release from PyPI:
-> pip install pypots
+# by conda
+conda install -c conda-forge pypots  # the first time installation
+conda update  -c conda-forge pypots  # update pypots to the latest version
+````
 
-or install from the source code with the latest features not officially released in a version:
+Alternatively, you can install from the latest source code with the latest features but may be not officially released yet:
 > pip install https://github.com/WenjieDu/PyPOTS/archive/main.zip
 
 
 ## ❖ Usage
-<a href="https://github.com/WenjieDu/BrewedPOTS">
-    <img src="https://raw.githubusercontent.com/WenjieDu/BrewedPOTS/main/figs/BrewedPOTS_logo.jpg" align="left" width="160" alt="BrewedPOTS logo"/>
+<a href="https://github.com/WenjieDu/BrewPOTS">
+    <img src="https://raw.githubusercontent.com/WenjieDu/BrewPOTS/main/figs/BrewPOTS_logo.jpg" align="left" width="160" alt="BrewPOTS logo"/>
 </a>
-PyPOTS tutorials have been released. Considering the future workload, I separate the tutorials into a single repo,
-and you can find them in [BrewedPOTS](https://github.com/WenjieDu/BrewedPOTS).
 
-If you have further questions, please refer to PyPOTS documentation [📑http://pypots.readthedocs.io](http://pypots.readthedocs.io).
+PyPOTS tutorials have been released. Considering the future workload, I separate the tutorials into a single repo,
+and you can find them in [BrewPOTS](https://github.com/WenjieDu/BrewPOTS).
+Take a look at it now, and brew your POTS dataset into a cup of coffee! 🤓
+
+If you have further questions, please refer to PyPOTS documentation 📑[docs.pypots.com](https://docs.pypots.com).
 Besides, you can also [raise an issue](https://github.com/WenjieDu/PyPOTS/issues) or [ask in our community](#-community).
 
 We present you a usage example of imputing missing values in time series with PyPOTS below, you can click it to view.
@@ -117,12 +125,13 @@ from pypots.utils.metrics import cal_mae
 data = load_specific_dataset('physionet_2012')  # PyPOTS will automatically download and extract it.
 X = data['X']
 num_samples = len(X['RecordID'].unique())
-X = X.drop('RecordID', axis = 1)
+X = X.drop(['RecordID', 'Time'], axis = 1)
 X = StandardScaler().fit_transform(X.to_numpy())
 X = X.reshape(num_samples, 48, -1)
 X_intact, X, missing_mask, indicating_mask = mcar(X, 0.1) # hold out 10% observed values as ground truth
 X = masked_fill(X, 1 - missing_mask, np.nan)
 dataset = {"X": X}
+print(dataset["X"].shape)  # (11988, 48, 37), 11988 samples, 48 time steps, 37 features
 # Model training. This is PyPOTS showtime. 💪
 saits = SAITS(n_steps=48, n_features=37, n_layers=2, d_model=256, d_inner=128, n_head=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
 saits.fit(dataset)  # train the model. Here I use the whole dataset as the training set, because ground truth is not visible to the model.
@@ -162,34 +171,22 @@ We are pursuing to publish a short paper introducing PyPOTS in prestigious acade
 for reference. If you use PyPOTS in your research, please cite it as below and 🌟star this repository to make others
 notice this work. 🤗
 
-```bibtex
-@misc{du2022PyPOTS,
+``` bibtex
+@software{Du2022PyPOTS,
 author = {Wenjie Du},
 title = {{PyPOTS: A Python Toolbox for Data Mining on Partially-Observed Time Series}},
 year = {2022},
-howpublished = {\url{https://github.com/wenjiedu/pypots}},
-url = {\url{https://github.com/wenjiedu/pypots}},
+howpublished = {\url{https://github.com/WenjieDu/PyPOTS}},
+url = {\url{https://github.com/WenjieDu/PyPOTS}},
 doi = {10.5281/zenodo.6823221},
 }
 ```
 
 or
 
-`Wenjie Du. (2022).
-PyPOTS: A Python Toolbox for Data Mining on Partially-Observed Time Series.
-Zenodo. https://doi.org/10.5281/zenodo.6823221`
-
-
-## ❖ Community
-We care about the feedback from our users, so we're building PyPOTS community on
-
-- [Slack](https://pypots-dev.slack.com). General discussion, Q&A, and development team are here;
-- [LinkedIn](https://www.linkedin.com/company/pypots). Official announcements and news are here;
-- [WeChat (微信公众号)](https://mp.weixin.qq.com/s/m6j83SJNgz-xySSZd-DTBw). We also run a group chat on WeChat, 
-  and you can get the QR code from the official account after following it;
-
-If you have any suggestions or want to contribute ideas or share time-series related papers, join us and tell.
-PyPOTS community is open, transparent, and surely friendly. Let's work together to build and improve PyPOTS 💪!
+> Wenjie Du. (2022).
+> PyPOTS: A Python Toolbox for Data Mining on Partially-Observed Time Series.
+> Zenodo. https://doi.org/10.5281/zenodo.6823221
 
 
 ## ❖ Contribution
@@ -197,14 +194,11 @@ You're very welcome to contribute to this exciting project!
 
 By committing your code, you'll
 
-1. make your well-established model out-of-the-box for PyPOTS users to run (Similar to 
-   [**Scikit-learn**](https://scikit-learn.org/stable/faq.html#what-are-the-inclusion-criteria-for-new-algorithms), 
-   we set current inclusion criteria as: the paper should be published for at least 1 year, have 10+ citations, 
-   and the usefulness to our users can be claimed);
-2. be listed as one of [PyPOTS contributors](https://github.com/WenjieDu/PyPOTS/graphs/contributors): 
-   <a href="https://github.com/wenjiedu/pypots/graphs/contributors">
-      <img align="center" src="https://contrib.rocks/image?repo=wenjiedu/pypots">
-   </a>;
+1. make your well-established model out-of-the-box for PyPOTS users to run,
+   and help your work obtain more exposure and impact.
+   Take a look at our [inclusion criteria](https://docs.pypots.com/en/latest/faq.html#inclusion-criteria);
+2. be listed as one of [PyPOTS contributors](https://github.com/WenjieDu/PyPOTS/graphs/contributors):
+   <img align="center" src="https://contrib.rocks/image?repo=wenjiedu/pypots">;
 3. get mentioned in our [release notes](https://github.com/WenjieDu/PyPOTS/releases);
 
 You can also contribute to PyPOTS by simply staring🌟 this repo to help more people notice it.
@@ -225,6 +219,18 @@ Your star is your recognition to PyPOTS, and it matters!
     <img alt="PyPOTS forkers" src="https://reporoster.com/forks/dark/WenjieDu/PyPOTS">
 </a>
 </details>
+
+
+## ❖ Community
+We care about the feedback from our users, so we're building PyPOTS community on
+
+- [Slack](https://pypots-dev.slack.com). General discussion, Q&A, and our development team are here;
+- [LinkedIn](https://www.linkedin.com/company/pypots). Official announcements and news are here;
+- [WeChat (微信公众号)](https://mp.weixin.qq.com/s/m6j83SJNgz-xySSZd-DTBw). We also run a group chat on WeChat,
+  and you can get the QR code from the official account after following it;
+
+If you have any suggestions or want to contribute ideas or share time-series related papers, join us and tell.
+PyPOTS community is open, transparent, and surely friendly. Let's work together to build and improve PyPOTS 💪!
 
 
 ## ❖ Attention 👀
